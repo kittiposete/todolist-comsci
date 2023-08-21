@@ -1,5 +1,6 @@
 import tkinter as tk
 
+
 def add_task_click():
     task_name = entry.get()
     is_important_int = important_checkbox_getter.get()
@@ -17,6 +18,7 @@ def add_task_click():
     #     listbox.insert(tk.END, task_name)
     #     entry.delete(0, tk.END)
 
+
 def add_task_to_list(task_name, is_important):
     listbox.insert(tk.END, task_name)
     if is_important:
@@ -28,8 +30,10 @@ def delete_task():
     if selected_task_index:
         listbox.delete(selected_task_index)
 
+
 def print_selection():
     print("response" + str(important_checkbox_getter.get()))
+
 
 # Create the main application window
 root = tk.Tk()
@@ -42,7 +46,8 @@ entry = tk.Entry(root)
 add_button = tk.Button(root, text="Add", command=add_task_click)
 delete_button = tk.Button(root, text="Delete", command=delete_task)
 listbox = tk.Listbox(root)
-important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_checkbox_getter, onvalue=1, offvalue=0, command=print_selection)
+important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_checkbox_getter, onvalue=1, offvalue=0,
+                                    command=print_selection)
 
 # Arrange widgets using grid layout
 entry.grid(row=0, column=0, padx=10, pady=10)
