@@ -1,5 +1,8 @@
 import tkinter as tk
+from task_item import  TaskItem
+import database
 
+task_list = []
 
 def add_task_click():
     task_name = entry.get()
@@ -14,26 +17,29 @@ def add_task_click():
 
     if task_name:
         add_task_to_list(task_name, is_important)
-    # if task_name:
-    #     listbox.insert(tk.END, task_name)
-    #     entry.delete(0, tk.END)
 
 
 def add_task_to_list(task_name, is_important):
     listbox.insert(tk.END, task_name)
     if is_important:
         listbox.itemconfig(tk.END, {'fg': 'red'})
+        task_list.append(TaskItem(task_name, True))
+    else:
+        task_list.append(TaskItem(task_name, False))
 
 
 def delete_task():
     selected_task_index = listbox.curselection()
     if selected_task_index:
         listbox.delete(selected_task_index)
+        task_list.pop(selected_task_index)
 
 
 def print_selection():
     print("response" + str(important_checkbox_getter.get()))
 
+def save():
+    database.save_to_disk(task_list)
 
 # Create the main application window
 root = tk.Tk()
@@ -48,6 +54,8 @@ delete_button = tk.Button(root, text="Delete", command=delete_task)
 listbox = tk.Listbox(root)
 important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_checkbox_getter, onvalue=1, offvalue=0,
                                     command=print_selection)
+save_button = tk.Button(root, text="save", command=save)
+
 
 # Arrange widgets using grid layout
 entry.grid(row=0, column=0, padx=10, pady=10)
@@ -55,6 +63,7 @@ important_checkbox.grid(row=0, column=1, padx=0, pady=0)
 add_button.grid(row=0, column=2, padx=10, pady=10)
 delete_button.grid(row=1, column=1, padx=10, pady=10)
 listbox.grid(row=1, column=0, padx=10, pady=10, rowspan=2)
+save_button.grid(row=3, column=0, padx=0, pady=0)
 
 # Start the Tkinter event loop
 root.mainloop()
