@@ -30,6 +30,7 @@ def add_task_to_list(task_name, is_important):
 
 def delete_task():
     selected_task_index = listbox.curselection()
+    selected_task_index = int(selected_task_index)
     if selected_task_index:
         listbox.delete(selected_task_index)
         task_list.pop(selected_task_index)
