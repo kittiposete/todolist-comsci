@@ -3,13 +3,13 @@ import json
 
 file_path = 'output.json'
 
+
 def task_item_to_dict(task: TaskItem):
-    dict_output = {}
-    dict_output["task_title"] = task.task_title
-    dict_output["is_important"] = task.is_important
+    dict_output = {"task_title": task.task_title, "is_important": task.is_important}
     return dict_output
 
-def save_to_disk(task_list:list):
+
+def save_to_disk(task_list: list):
     print("save_to_disk")
     list_of_dict = []
     for item in task_list:
@@ -17,3 +17,7 @@ def save_to_disk(task_list:list):
     json_string = json.dumps(list_of_dict)
     with open(file_path, 'w') as json_file:
         json_file.write(json_string)
+
+
+def load_from_disk():
+    print("Load from disk")
