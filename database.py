@@ -20,17 +20,20 @@ def save_to_disk(task_list: list):
 
 
 def load_from_disk():
-    with open(file_path, 'r') as file:
-        chars = file.read()
+    try:
+        with open(file_path, 'r') as file:
+            chars = file.read()
 
-    json_string = ""
+        json_string = ""
 
-    for c in chars:
-        json_string += c
+        for c in chars:
+            json_string += c
 
-    data_dict = json.loads(json_string)
+        data_dict = json.loads(json_string)
 
-    # Now 'data_dict' is a dictionary containing the JSON data
-    print(data_dict)
+        # Now 'data_dict' is a dictionary containing the JSON data
+        print(data_dict)
 
-    return data_dict
+        return data_dict
+    except:
+        return
