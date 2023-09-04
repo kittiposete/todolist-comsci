@@ -66,10 +66,11 @@ listbox.grid(row=1, column=0, padx=10, pady=10, rowspan=2)
 save_button.grid(row=3, column=0, padx=0, pady=0)
 
 disk_data = database.load_from_disk()
-for item in disk_data:
-    is_important = item["is_important"]
-    task_name = item["task_title"]
-    add_task_to_list(task_name, is_important)
+if disk_data != None:
+    for item in disk_data:
+        is_important = item["is_important"]
+        task_name = item["task_title"]
+        add_task_to_list(task_name, is_important)
 
 # Start the Tkinter event loop
 root.mainloop()
