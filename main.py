@@ -1,8 +1,9 @@
 import tkinter as tk
-from task_item import  TaskItem
+from task_item import TaskItem
 import database
 
 task_list = []
+
 
 def add_task_click():
     task_name = entry.get()
@@ -38,8 +39,10 @@ def delete_task():
 def print_selection():
     print("response" + str(important_checkbox_getter.get()))
 
+
 def save():
     database.save_to_disk(task_list)
+
 
 # Create the main application window
 root = tk.Tk()
@@ -55,7 +58,6 @@ listbox = tk.Listbox(root)
 important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_checkbox_getter, onvalue=1, offvalue=0,
                                     command=print_selection)
 save_button = tk.Button(root, text="save", command=save)
-
 
 # Arrange widgets using grid layout
 entry.grid(row=0, column=0, padx=10, pady=10)
