@@ -22,11 +22,9 @@ def add_task_click():
 
 def add_task_to_list(task_name, is_important):
     listbox.insert(tk.END, task_name)
+    task_list.append(TaskItem(task_name, is_important))
     if is_important:
         listbox.itemconfig(tk.END, {'fg': 'red'})
-        task_list.append(TaskItem(task_name, True))
-    else:
-        task_list.append(TaskItem(task_name, False))
 
 
 def delete_task():
