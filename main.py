@@ -17,6 +17,8 @@ task_list = []
 
 def add_task_click():
     task_name = entry.get()
+    if task_name == "" or task_name is None:
+        return
     is_important_int = important_checkbox_getter.get()
     is_important = None
     if is_important_int == 0:
@@ -32,24 +34,25 @@ def add_task_click():
     month = date[0]
     day = date[1]
     year = date[2]
+    year = "20" + year
 
     # convent to int
     date_object = datetime.date(int(year), int(month), int(day))
-    print(date_object)
+    date_int = date_object.toordinal()
+    print("date_int : %d" % date_int)
 
     if task_name:
-        add_task_to_list(task_name, is_important)
+        add_task_to_list(TaskItem(task_name, is_important, date_int))
 
 
-def add_task_to_list(task_name: str, is_important: bool):
-    """
-    :type task_name: str
-    :type is_important: bool
-    :param task_name:
-    :param is_important:
-    """
+def add_task_to_list(task):
+    if type(task) is not TaskItem:
+        Exception("Error: task is not TaskItem")
+    task_name = task.task_title
+    is_important = task.is_important
+
     listbox.insert(tk.END, task_name)
-    task_list.append(TaskItem(task_name, is_important, 0))
+    task_list.append(task)
     if is_important:
         listbox.itemconfig(tk.END, {'fg': 'red'})
 
@@ -104,7 +107,7 @@ if disk_data is not None:
     for item in disk_data:
         is_important = item["is_important"]
         task_name = item["task_title"]
-        add_task_to_list(task_name, is_important)
+        add_task_to_list(TaskItem(task_name, is_important, 0))
 
 # Start the Tkinter event loop
 root.mainloop()
