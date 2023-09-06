@@ -45,9 +45,7 @@ def add_task_click():
         add_task_to_list(TaskItem(task_name, is_important, date_int))
 
 
-def add_task_to_list(task):
-    if type(task) is not TaskItem:
-        Exception("Error: task is not TaskItem")
+def add_task_to_list(task: TaskItem):
     task_name = task.task_title
     is_important = task.is_important
 

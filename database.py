@@ -5,7 +5,8 @@ file_path = 'output.json'
 
 
 def task_item_to_dict(task: TaskItem):
-    dict_output = {"task_title": task.task_title, "is_important": task.is_important}
+    dict_output = {"task_title": task.task_title, "is_important": task.is_important,
+                   "date": task.date}
     return dict_output
 
 
@@ -19,7 +20,7 @@ def save_to_disk(task_list: list):
         json_file.write(json_string)
 
 
-def load_from_disk():
+def load_from_disk() -> list:
     try:
         with open(file_path, 'r') as file:
             chars = file.read()
@@ -31,9 +32,12 @@ def load_from_disk():
 
         data_dict = json.loads(json_string)
 
-        # Now 'data_dict' is a dictionary containing the JSON data
-        print(data_dict)
+        task_list = []
 
-        return data_dict
+        for item in data_dict:
+            task_item = TaskItem(item["task_title"], item["is_important"], item["date"])
+            task_list.append(task_item)
+
+        return task_list
     except:
         return
