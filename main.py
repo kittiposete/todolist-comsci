@@ -48,8 +48,11 @@ def add_task_click():
 def add_task_to_list(task: TaskItem):
     task_name = task.task_title
     is_important = task.is_important
+    date = task.date
+    date_object = datetime.date.fromordinal(date)
+    date_string = date_object.strftime("%d/%m/%Y")
 
-    listbox.insert(tk.END, task_name)
+    listbox.insert(tk.END, "%s - %s" % (task_name, date_string))
     task_list.append(task)
     if is_important:
         listbox.itemconfig(tk.END, {'fg': 'red'})
