@@ -85,6 +85,7 @@ entry.place(x=250, y=0, width=200, height=30)
 add_button.place(x=250, y=60, width=100, height=30)
 important_checkbox.place(x=250, y=30, width=100, height=30)
 save_button.place(x=0, y=240, width=100, height=30)
+date_picker.place(x=250, y=100, width=200, height=200)
 
 disk_data = database.load_from_disk()
 if disk_data is not None:
