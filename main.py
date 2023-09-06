@@ -106,8 +106,8 @@ date_picker.place(x=250, y=100, width=200, height=200)
 disk_data = database.load_from_disk()
 if disk_data is not None:
     for item in disk_data:
-        is_important = item["is_important"]
-        task_name = item["task_title"]
+        # is_important = item["is_important"]
+        # task_name = item["task_title"]
         add_task_to_list(TaskItem(task_name, is_important, 1))
 
 # Start the Tkinter event loop
