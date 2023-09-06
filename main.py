@@ -1,6 +1,9 @@
 import tkinter as tk
 from task_item import TaskItem
 import database
+import install_pip
+
+install_pip.install_pip()
 
 task_list = []
 
