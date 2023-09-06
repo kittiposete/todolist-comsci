@@ -74,7 +74,7 @@ save_button.grid(row=3, column=0, padx=0, pady=0)
 date_picker.grid(row=3, column=1, padx=0, pady=0)
 
 disk_data = database.load_from_disk()
-if disk_data != None:
+if disk_data is not None:
     for item in disk_data:
         is_important = item["is_important"]
         task_name = item["task_title"]
