@@ -57,6 +57,7 @@ important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_c
                                     onvalue=1, offvalue=0,
                                     command=print_selection)
 save_button = tk.Button(root, text="save", command=save)
+date_picker = tk.DatePicker(root)
 
 # Arrange widgets using grid layout
 entry.grid(row=0, column=0, padx=10, pady=10)
@@ -65,6 +66,7 @@ add_button.grid(row=0, column=2, padx=10, pady=10)
 delete_button.grid(row=1, column=1, padx=10, pady=10)
 listbox.grid(row=1, column=0, padx=10, pady=10, rowspan=2)
 save_button.grid(row=3, column=0, padx=0, pady=0)
+date_picker.grid(row=3, column=1, padx=0, pady=0)
 
 disk_data = database.load_from_disk()
 if disk_data != None:
