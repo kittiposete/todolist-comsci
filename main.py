@@ -25,6 +25,10 @@ def add_task_click():
     else:
         Exception("Error: get data from checkbox")
 
+    # get date from date picker
+    date = date_picker.get_date()
+    print(date)
+
     if task_name:
         add_task_to_list(task_name, is_important)
 
