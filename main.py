@@ -108,7 +108,7 @@ if disk_data is not None:
     for item in disk_data:
         # is_important = item["is_important"]
         # task_name = item["task_title"]
-        add_task_to_list(TaskItem(task_name, is_important, 1))
+        add_task_to_list(item)
 
 # Start the Tkinter event loop
 root.mainloop()
