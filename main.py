@@ -53,7 +53,8 @@ entry = tk.Entry(root)
 add_button = tk.Button(root, text="Add", command=add_task_click)
 delete_button = tk.Button(root, text="Delete", command=delete_task)
 listbox = tk.Listbox(root)
-important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_checkbox_getter, onvalue=1, offvalue=0,
+important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_checkbox_getter,
+                                    onvalue=1, offvalue=0,
                                     command=print_selection)
 save_button = tk.Button(root, text="save", command=save)
 
