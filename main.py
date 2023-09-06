@@ -1,4 +1,5 @@
 import install_pip
+
 install_pip.install_pip()
 
 import tkinter as tk
@@ -26,7 +27,7 @@ def add_task_click():
 
 def add_task_to_list(task_name, is_important):
     listbox.insert(tk.END, task_name)
-    task_list.append(TaskItem(task_name, is_important))
+    task_list.append(TaskItem(task_name, is_important, 0))
     if is_important:
         listbox.itemconfig(tk.END, {'fg': 'red'})
 
@@ -62,7 +63,6 @@ important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_c
                                     command=print_selection)
 save_button = tk.Button(root, text="save", command=save)
 date_picker = tkcalendar.Calendar(root, selectmode="day")
-
 
 # Arrange widgets using grid layout
 entry.grid(row=0, column=0, padx=10, pady=10)
