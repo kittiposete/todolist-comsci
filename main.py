@@ -28,7 +28,7 @@ def add_task_click():
     # get date from date picker
     date = date_picker.get_date()
     print(date)
-    print(type(date)
+    print(type(date))
 
     if task_name:
         add_task_to_list(task_name, is_important)
