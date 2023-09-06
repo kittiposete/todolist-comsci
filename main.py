@@ -4,6 +4,7 @@ for i in range(2):
         from task_item import TaskItem
         import database
         import tkcalendar
+        import datetime
 
         break
     except ModuleNotFoundError:
@@ -27,8 +28,14 @@ def add_task_click():
 
     # get date from date picker
     date = date_picker.get_date()
-    print(date)
-    print(type(date))
+    date = date.split("/")
+    month = date[0]
+    day = date[1]
+    year = date[2]
+
+    # convent to int
+    date_object = datetime.date(int(year), int(month), int(day))
+    print(date_object)
 
     if task_name:
         add_task_to_list(task_name, is_important)
