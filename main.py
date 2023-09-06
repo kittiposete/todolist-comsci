@@ -61,6 +61,9 @@ def save():
 root = tk.Tk()
 root.title("To-Do List App")
 
+# set window size
+root.geometry("600x400")
+
 important_checkbox_getter = tk.IntVar()
 
 # Create and configure widgets
