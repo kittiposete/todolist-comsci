@@ -1,0 +1,4 @@
+1. save deleted task
+2. change app icon
+3. date potion
+4. make list bigger
