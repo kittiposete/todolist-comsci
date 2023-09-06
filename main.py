@@ -64,14 +64,14 @@ delete_button = tk.Button(root, text="Delete", command=delete_task)
 save_button = tk.Button(root, text="save", command=save)
 date_picker = tkcalendar.Calendar(root, selectmode="day")
 
-# Arrange widgets using grid layout
-listbox.grid(row=0, column=0, columnspan=2, sticky="nsew")
-delete_button.grid(row=1, column=0, sticky="nsew")
+# Arrange widgets using space left and top
+listbox.place(x=0, y=0, width=200, height=200)
+delete_button.place(x=0, y=200, width=100, height=30)
 
-entry.grid(row=0, column=1, sticky="nsew")
-important_checkbox.grid(row=1, column=1, sticky="nsew")
-add_button.grid(row=2, column=0, sticky="nsew")
-save_button.grid(row=3, column=1, sticky="nsew")
+entry.place(x=30, y=0, width=200, height=30)
+add_button.place(x=30, y=30, width=100, height=30)
+important_checkbox.place(x=130, y=30, width=100, height=30)
+save_button.place(x=0, y=230, width=100, height=30)
 
 disk_data = database.load_from_disk()
 if disk_data is not None:
