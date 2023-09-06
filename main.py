@@ -1,9 +1,10 @@
+import install_pip
+install_pip.install_pip()
+
 import tkinter as tk
 from task_item import TaskItem
 import database
-import install_pip
-
-install_pip.install_pip()
+import tkcalendar
 
 task_list = []
 
@@ -60,7 +61,8 @@ important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_c
                                     onvalue=1, offvalue=0,
                                     command=print_selection)
 save_button = tk.Button(root, text="save", command=save)
-date_picker = tk.DatePicker(root)
+date_picker = tkcalendar.Calendar(root, selectmode="day")
+
 
 # Arrange widgets using grid layout
 entry.grid(row=0, column=0, padx=10, pady=10)
