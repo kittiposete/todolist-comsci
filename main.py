@@ -70,8 +70,8 @@ delete_button.grid(row=1, column=0, sticky="nsew")
 
 entry.grid(row=0, column=1, sticky="nsew")
 important_checkbox.grid(row=1, column=1, sticky="nsew")
-add_button.grid(row=1, column=0, sticky="nsew")
-save_button.grid(row=1, column=1, sticky="nsew")
+add_button.grid(row=2, column=0, sticky="nsew")
+save_button.grid(row=3, column=1, sticky="nsew")
 
 disk_data = database.load_from_disk()
 if disk_data is not None:
