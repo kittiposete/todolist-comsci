@@ -1,11 +1,15 @@
-import install_pip
+for i in range(2):
+    try:
+        import tkinter as tk
+        from task_item import TaskItem
+        import database
+        import tkcalendar
 
-install_pip.install_pip()
+        break
+    except ModuleNotFoundError:
+        import install_pip
 
-import tkinter as tk
-from task_item import TaskItem
-import database
-import tkcalendar
+        install_pip.install_pip()
 
 task_list = []
 
@@ -25,7 +29,13 @@ def add_task_click():
         add_task_to_list(task_name, is_important)
 
 
-def add_task_to_list(task_name, is_important):
+def add_task_to_list(task_name: str, is_important: bool):
+    """
+    :type task_name: str
+    :type is_important: bool
+    :param task_name:
+    :param is_important:
+    """
     listbox.insert(tk.END, task_name)
     task_list.append(TaskItem(task_name, is_important, 0))
     if is_important:
