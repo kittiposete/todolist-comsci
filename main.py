@@ -98,7 +98,7 @@ important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_c
                                     command=print_selection)
 delete_button = tk.Button(root, text="Delete", command=delete_task)
 save_button = tk.Button(root, text="save", command=save)
-finish_button = tk.Button(root, text="save", command=finish_task)
+finish_button = tk.Button(root, text="finish", command=finish_task)
 date_picker = tkcalendar.Calendar(root, selectmode="day")
 
 sort_by_label = tk.Label(root, text="Sort by:")
