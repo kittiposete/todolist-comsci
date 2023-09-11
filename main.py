@@ -1,4 +1,4 @@
-print("program version 1.0.0")
+print("program version 1.0.1")
 for i in range(2):
     try:
         import tkinter as tk
@@ -86,10 +86,6 @@ def delete_task():
         reload_listbox()
 
 
-def print_selection():
-    print("response" + str(important_checkbox_getter.get()))
-
-
 def save():
     database.save_to_disk(task_list)
 
@@ -119,8 +115,7 @@ listbox = tk.Listbox(root)
 entry = tk.Entry(root)
 add_button = tk.Button(root, text="Add", command=add_task_click)
 important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_checkbox_getter,
-                                    onvalue=1, offvalue=0,
-                                    command=print_selection)
+                                    onvalue=1, offvalue=0)
 delete_button = tk.Button(root, text="Delete", command=delete_task)
 save_button = tk.Button(root, text="save", command=save)
 finish_button = tk.Button(root, text="finish", command=finish_task)
