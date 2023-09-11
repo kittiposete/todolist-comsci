@@ -1,4 +1,4 @@
-print("program version 1.0.2")
+print("program version 1.0.3")
 for i in range(2):
     try:
         import tkinter as tk
@@ -26,7 +26,7 @@ def reload_listbox():
     # breakpoint()
     task_list_size = len(task_list)
     for index in range(task_list_size):
-        add_task_to_list(task_list[index])
+        add_task_to_listUI(task_list[index])
 
 
 def add_task_click():
@@ -55,11 +55,13 @@ def add_task_click():
     date_int = date_object.toordinal()
     print("date_int : %d" % date_int)
 
-    if task_name:
-        add_task_to_list(TaskItem(task_name, is_important, date_int))
+    # create task item
+    task_item = TaskItem(task_name, is_important, date_int)
+    task_list.append(task_item)
+    reload_listbox()
 
 
-def add_task_to_list(task: TaskItem):
+def add_task_to_listUI(task: TaskItem):
     task_name = task.task_title
     is_important = task.is_important
     is_finished = task.is_finished
@@ -140,7 +142,7 @@ sort_by_date_button.place(x=100, y=0, width=50, height=30)  # Moved sort by date
 disk_data = database.load_from_disk()
 if disk_data is not None:
     for item in disk_data:
-        add_task_to_list(item)
+        add_task_to_listUI(item)
 
 # Start the Tkinter event loop
 root.mainloop()
