@@ -15,6 +15,19 @@ for i in range(2):
 task_list = []
 
 
+def reload_listbox():
+    print("run reload listbox")
+    # clear listbox
+    listbox.delete(0, tk.END)
+    print("clear listbox")
+    # add task to listbox
+    print(task_list)
+    # breakpoint()
+    task_list_size = len(task_list)
+    for index in range(task_list_size):
+        add_task_to_list(task_list[index])
+
+
 def add_task_click():
     task_name = entry.get()
     if task_name == "" or task_name is None:
@@ -48,14 +61,22 @@ def add_task_click():
 def add_task_to_list(task: TaskItem):
     task_name = task.task_title
     is_important = task.is_important
+    is_finished = task.is_finished
     date = task.date
     date_object = datetime.date.fromordinal(date)
     date_string = date_object.strftime("%d/%m/%Y")
 
-    listbox.insert(tk.END, "%s - %s" % (task_name, date_string))
+    if is_finished:
+        listbox.insert(tk.END, "%s - Finished" % task_name)
+    else:
+        listbox.insert(tk.END, "%s - %s" % (task_name, date_string))
     task_list.append(task)
     if is_important:
         listbox.itemconfig(tk.END, {'fg': 'red'})
+    elif task.is_finished:
+        listbox.itemconfig(tk.END, {'fg': 'grey'})
+    else:
+        listbox.itemconfig(tk.END, {'fg': 'black'})
 
 
 def delete_task():
@@ -74,11 +95,14 @@ def save():
 
 
 def finish_task():
+    print("run finish task")
     selected_task_index = listbox.curselection()
     if selected_task_index:
-        listbox.delete(selected_task_index[0])
         task_list[selected_task_index[0]].is_finished = True
-
+        print("add finish task")
+        # refresh listbox
+        reload_listbox()
+        print("reload listbox")
 
 
 # Create the main application window
