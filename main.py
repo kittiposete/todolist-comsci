@@ -1,3 +1,4 @@
+print("program version 1.0.0")
 for i in range(2):
     try:
         import tkinter as tk
@@ -68,23 +69,21 @@ def add_task_to_list(task: TaskItem):
 
     if is_finished:
         listbox.insert(tk.END, "%s - Finished" % task_name)
-    else:
-        listbox.insert(tk.END, "%s - %s" % (task_name, date_string))
-    task_list.append(task)
-    if is_important:
-        listbox.itemconfig(tk.END, {'fg': 'red'})
-    elif task.is_finished:
         listbox.itemconfig(tk.END, {'fg': 'grey'})
     else:
-        listbox.itemconfig(tk.END, {'fg': 'black'})
+        listbox.insert(tk.END, "%s - %s" % (task_name, date_string))
+        if is_important:
+            listbox.itemconfig(tk.END, {'fg': 'red'})
+        else:
+            listbox.itemconfig(tk.END, {'fg': 'black'})
+    task_list.append(task)
 
 
 def delete_task():
     selected_task_index = listbox.curselection()
     if selected_task_index:
-        listbox.delete(selected_task_index[0])
+        task_list.pop(selected_task_index[0])
         reload_listbox()
-
 
 
 def print_selection():
