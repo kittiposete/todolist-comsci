@@ -83,7 +83,8 @@ def delete_task():
     selected_task_index = listbox.curselection()
     if selected_task_index:
         listbox.delete(selected_task_index[0])
-        task_list.pop(selected_task_index[0])
+        reload_listbox()
+
 
 
 def print_selection():
