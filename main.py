@@ -73,6 +73,13 @@ def save():
     database.save_to_disk(task_list)
 
 
+def finish_task():
+    selected_task_index = listbox.curselection()
+    if selected_task_index:
+        listbox.delete(selected_task_index[0])
+        task_list[selected_task_index[0]].is_finished = True
+
+
 # Create the main application window
 root = tk.Tk()
 root.title("To-Do List App")
@@ -91,17 +98,25 @@ important_checkbox = tk.Checkbutton(root, text="IMPORTANT", variable=important_c
                                     command=print_selection)
 delete_button = tk.Button(root, text="Delete", command=delete_task)
 save_button = tk.Button(root, text="save", command=save)
+finish_button = tk.Button(root, text="save", command=finish_task)
 date_picker = tkcalendar.Calendar(root, selectmode="day")
 
-# Arrange widgets using space left and top
-listbox.place(x=0, y=0, width=200, height=200)
-delete_button.place(x=0, y=200, width=100, height=30)
+sort_by_label = tk.Label(root, text="Sort by:")
+sort_by_name_button = tk.Button(root, text="Name")
+sort_by_date_button = tk.Button(root, text="Date")
 
-entry.place(x=250, y=0, width=200, height=30)
-add_button.place(x=250, y=60, width=100, height=30)
-important_checkbox.place(x=250, y=30, width=100, height=30)
-save_button.place(x=0, y=240, width=100, height=30)
-date_picker.place(x=250, y=100, width=200, height=200)
+# Arrange widgets using space left and top
+listbox.place(x=0, y=50, width=200, height=200)  # Moved listbox down by 50 pixels
+finish_button.place(x=0, y=250, width=100, height=30)  # Moved Delete button down by 50 pixels
+entry.place(x=250, y=50, width=200, height=30)  # Moved entry field down by 50 pixels
+add_button.place(x=250, y=110, width=100, height=30)  # Moved Add button down by 50 pixels
+important_checkbox.place(x=250, y=80, width=100, height=30)  # Moved IMPORTANT checkbox down by 50 pixels
+delete_button.place(x=0, y=290, width=100, height=30)  # Moved Save button down by 50 pixels
+save_button.place(x=0, y=320, width=100, height=30)  # Moved Save button down by 50 pixels
+date_picker.place(x=250, y=150, width=200, height=200)  # Moved date picker down by 50 pixels
+sort_by_label.place(x=0, y=0, width=50, height=30)  # Moved sort by label down by 50 pixels
+sort_by_name_button.place(x=50, y=0, width=50, height=30)  # Moved sort by name button down by 50 pixels
+sort_by_date_button.place(x=100, y=0, width=50, height=30)  # Moved sort by date button down by 50 pixels
 
 disk_data = database.load_from_disk()
 if disk_data is not None:
