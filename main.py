@@ -1,4 +1,4 @@
-print("program version 1.0.1")
+print("program version 1.0.2")
 for i in range(2):
     try:
         import tkinter as tk
@@ -76,7 +76,6 @@ def add_task_to_list(task: TaskItem):
             listbox.itemconfig(tk.END, {'fg': 'red'})
         else:
             listbox.itemconfig(tk.END, {'fg': 'black'})
-    task_list.append(task)
 
 
 def delete_task():
