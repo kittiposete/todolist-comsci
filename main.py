@@ -121,8 +121,6 @@ sort_by_date_button.place(x=100, y=0, width=50, height=30)  # Moved sort by date
 disk_data = database.load_from_disk()
 if disk_data is not None:
     for item in disk_data:
-        # is_important = item["is_important"]
-        # task_name = item["task_title"]
         add_task_to_list(item)
 
 # Start the Tkinter event loop
