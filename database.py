@@ -6,7 +6,7 @@ file_path = 'output.json'
 
 def task_item_to_dict(task: TaskItem):
     dict_output = {"task_title": task.task_title, "is_important": task.is_important,
-                   "date": task.date}
+                   "date": task.date, "is_finished": task.is_finished}
     return dict_output
 
 
@@ -35,7 +35,7 @@ def load_from_disk() -> list:
         task_list = []
 
         for item in data_dict:
-            task_item = TaskItem(item["task_title"], item["is_important"], item["date"])
+            task_item = TaskItem(item["task_title"], item["is_important"], item["date"], item["is_finished"])
             task_list.append(task_item)
 
         return task_list
