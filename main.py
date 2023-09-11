@@ -80,6 +80,7 @@ def finish_task():
         task_list[selected_task_index[0]].is_finished = True
 
 
+
 # Create the main application window
 root = tk.Tk()
 root.title("To-Do List App")
