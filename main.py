@@ -1,4 +1,4 @@
-print("program version 1.0.5")
+print("program version 1.0.7")
 for i in range(2):
     try:
         import tkinter as tk
@@ -6,6 +6,8 @@ for i in range(2):
         import database
         import tkcalendar
         import datetime
+        import PIL
+        import PIL.Image
 
         break
     except ModuleNotFoundError:
@@ -26,7 +28,7 @@ def reload_listbox():
     # breakpoint()
     task_list_size = len(task_list)
     for index in range(task_list_size):
-        add_task_to_listUI(task_list[index])
+        add_task_to_list_ui(task_list[index])
 
 
 def add_task_click():
@@ -61,7 +63,7 @@ def add_task_click():
     reload_listbox()
 
 
-def add_task_to_listUI(task: TaskItem):
+def add_task_to_list_ui(task: TaskItem):
     task_name = task.task_title
     is_important = task.is_important
     is_finished = task.is_finished
@@ -142,12 +144,10 @@ sort_by_date_button.place(x=100, y=0, width=50, height=30)  # Moved sort by date
 disk_data = database.load_from_disk()
 if disk_data is not None:
     for item in disk_data:
-        add_task_to_listUI(item)
+        add_task_to_list_ui(item)
 
 # change app icon
-icon_photo = tk.PhotoImage(file="icon.jpg")
-print("icon_photo loaded")
-root.iconphoto(False, icon_photo)
+root.iconbitmap("icon.ico")
 
 # Start the Tkinter event loop
 root.mainloop()

@@ -1,7 +1,7 @@
 # this file use for install pip that you need to install pip
 import os
 
-requests_package = ["tkcalendar"]
+requests_package = ["tkcalendar", "Pillow"]
 
 def install_pip():
     # get installed packages
