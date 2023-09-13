@@ -16,7 +16,7 @@ for i in range(2):
         install_pip.install_pip()
 
 
-class application:
+class Application:
     def reload_listbox(self):
         print("run reload listbox")
         # clear listbox
@@ -149,4 +149,4 @@ class application:
 
 
 # run app
-application()
+Application()
