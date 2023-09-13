@@ -1,4 +1,4 @@
-print("program version 1.0.4")
+print("program version 1.0.5")
 for i in range(2):
     try:
         import tkinter as tk
@@ -144,11 +144,10 @@ if disk_data is not None:
     for item in disk_data:
         add_task_to_listUI(item)
 
-
 # change app icon
 icon_photo = tk.PhotoImage(file="icon.jpg")
+print("icon_photo loaded")
 root.iconphoto(False, icon_photo)
-
 
 # Start the Tkinter event loop
 root.mainloop()
