@@ -129,17 +129,17 @@ sort_by_name_button = tk.Button(root, text="Name")
 sort_by_date_button = tk.Button(root, text="Date")
 
 # Arrange widgets using space left and top
-listbox.place(x=0, y=50, width=200, height=200)  # Moved listbox down by 50 pixels
-finish_button.place(x=0, y=250, width=100, height=30)  # Moved Delete button down by 50 pixels
-entry.place(x=250, y=50, width=200, height=30)  # Moved entry field down by 50 pixels
-add_button.place(x=250, y=110, width=100, height=30)  # Moved Add button down by 50 pixels
-important_checkbox.place(x=250, y=80, width=100, height=30)  # Moved IMPORTANT checkbox down by 50 pixels
-delete_button.place(x=0, y=290, width=100, height=30)  # Moved Save button down by 50 pixels
-save_button.place(x=0, y=320, width=100, height=30)  # Moved Save button down by 50 pixels
-date_picker.place(x=250, y=150, width=200, height=200)  # Moved date picker down by 50 pixels
-sort_by_label.place(x=0, y=0, width=50, height=30)  # Moved sort by label down by 50 pixels
-sort_by_name_button.place(x=50, y=0, width=50, height=30)  # Moved sort by name button down by 50 pixels
-sort_by_date_button.place(x=100, y=0, width=50, height=30)  # Moved sort by date button down by 50 pixels
+listbox.place(x=0, y=50, width=200, height=200)
+finish_button.place(x=0, y=250, width=100, height=30)
+entry.place(x=250, y=50, width=200, height=30)
+add_button.place(x=250, y=110, width=100, height=30)
+important_checkbox.place(x=250, y=80, width=100, height=30)
+delete_button.place(x=0, y=290, width=100, height=30)
+save_button.place(x=0, y=320, width=100, height=30)
+date_picker.place(x=250, y=150, width=200, height=200)
+sort_by_label.place(x=0, y=0, width=50, height=30)
+sort_by_name_button.place(x=50, y=0, width=50, height=30)
+sort_by_date_button.place(x=100, y=0, width=50, height=30)
 
 disk_data = database.load_from_disk()
 if disk_data is not None:
