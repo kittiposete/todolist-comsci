@@ -7,6 +7,7 @@ for i in range(2):
         import datetime
         import PIL
         import PIL.Image
+        import sort_mode
 
         break
     except ModuleNotFoundError:
@@ -16,7 +17,21 @@ for i in range(2):
 
 
 class Application:
+    def resort_tasklist(self):
+        new_task_list = []
+        if self.sort_mode == sort_mode.SortMode().name:
+            # sort by name
+            new_task_list = sorted(self.task_list, key=lambda task: task.task_title)
+        elif self.sort_mode == sort_mode.SortMode().date:
+            # sort by date
+            new_task_list = sorted(self.task_list, key=lambda task: task.date)
+        else:
+            Exception("Error: sort mode")
+        self.task_list = new_task_list
+
+
     def reload_listbox(self):
+        self.resort_tasklist()
         print("run reload listbox")
         # clear listbox
         self.listbox.delete(0, tk.END)
@@ -96,6 +111,14 @@ class Application:
             self.reload_listbox()
             print("reload listbox")
 
+    def sort_by_name(self):
+        self.sort_mode = sort_mode.SortMode().name
+        self.reload_listbox()
+
+    def sort_by_date(self):
+        self.sort_mode = sort_mode.SortMode().date
+        self.reload_listbox()
+
     def __init__(self):
         self.task_list = []
 
@@ -107,6 +130,7 @@ class Application:
         root.geometry("600x400")
 
         self.important_checkbox_getter = tk.IntVar()
+        self.sort_mode = sort_mode.SortMode().name
 
         # Create and configure widgets
         self.listbox = tk.Listbox(root)
@@ -119,8 +143,8 @@ class Application:
         self.finish_button = tk.Button(root, text="finish", command=self.finish_task)
         self.date_picker = tkcalendar.Calendar(root, selectmode="day")
         self.sort_by_label = tk.Label(root, text="Sort by:")
-        self.sort_by_name_button = tk.Button(root, text="Name")
-        self.sort_by_date_button = tk.Button(root, text="Date")
+        self.sort_by_name_button = tk.Button(root, text="Name", command=self.sort_by_name)
+        self.sort_by_date_button = tk.Button(root, text="Date", command=self.sort_by_date)
 
         # Arrange widgets using space left and top
         self.listbox.place(x=0, y=50, width=200, height=200)
