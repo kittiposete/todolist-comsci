@@ -170,7 +170,7 @@ class Application:
         disk_data = database.load_from_disk()
         if disk_data is not None:
             for item in disk_data:
-                self.add_task_to_list_ui(item)
+                self.task_list.append(item)
 
         # change app icon
         root.iconbitmap("icon.ico")
