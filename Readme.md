@@ -67,7 +67,7 @@
 - Modification
 - Distribution
 
-## credits
+## Credits
 - [tkinter](https://docs.python.org/3/library/tkinter.html)
 - [tkcalendar](https://pypi.org/project/tkcalendar/)
 - [python](https://www.python.org/)
