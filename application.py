@@ -18,17 +18,25 @@ for i in range(2):
 
 class Application:
     def resort_tasklist(self):
-        new_task_list = []
+        new_task_list1 = []
         if self.sort_mode == sort_mode.SortMode().name:
             # sort by name
-            new_task_list = sorted(self.task_list, key=lambda task: task.task_title)
+            new_task_list1 = sorted(self.task_list, key=lambda task: task.task_title)
         elif self.sort_mode == sort_mode.SortMode().date:
             # sort by date
-            new_task_list = sorted(self.task_list, key=lambda task: task.date)
+            new_task_list1 = sorted(self.task_list, key=lambda task: task.date)
         else:
             Exception("Error: sort mode")
-        self.task_list = new_task_list
 
+        # move finished task to the end of list
+        new_task_list2 = []
+        for task in new_task_list1:
+            if not task.is_finished:
+                new_task_list2.append(task)
+        for task in new_task_list1:
+            if task.is_finished:
+                new_task_list2.append(task)
+        self.task_list = new_task_list2
 
     def reload_listbox(self):
         self.resort_tasklist()
