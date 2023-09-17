@@ -1,2 +1,3 @@
 output.json
 *.pyc
+__pycache__/install_pip.cpython-311.pyc
