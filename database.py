@@ -40,4 +40,4 @@ def load_from_disk() -> list:
 
         return task_list
     except:
-        return
+        return []
