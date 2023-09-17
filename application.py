@@ -171,6 +171,7 @@ class Application:
         if disk_data is not None:
             for item in disk_data:
                 self.task_list.append(item)
+        self.reload_listbox()
 
         # change app icon
         root.iconbitmap("icon.ico")
