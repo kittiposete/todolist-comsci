@@ -12,7 +12,7 @@
 - Mark tasks as important
 - Mark tasks as done
 - Save tasks to storage
-- Set take due date
+- Set tasks due date
 
 ## How to run
 1. In windows, open powershell as administrator 
